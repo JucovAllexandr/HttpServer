@@ -3,6 +3,9 @@
 
 #include <QWidget>
 #include <QHttpServer>
+#include <sw/redis++/redis++.h>
+
+using namespace sw::redis;
 
 QT_BEGIN_NAMESPACE
 namespace Ui { class Widget; }

@@ -1,5 +1,5 @@
 QT       += core gui httpserver
-LIBS += -lredis++ -lhiredis -pthread
+LIBS += -lredis++ -lhiredis -pthread -lmongocxx -lbsoncxx
 greaterThan(QT_MAJOR_VERSION, 4): QT += widgets
 
 CONFIG += c++11
@@ -29,3 +29,13 @@ FORMS += \
 qnx: target.path = /tmp/$${TARGET}/bin
 else: unix:!android: target.path = /opt/$${TARGET}/bin
 !isEmpty(target.path): INSTALLS += target
+
+unix:!macx: LIBS += -L$$PWD/../../../../../../usr/local/lib/ -lmongocxx
+
+INCLUDEPATH += $$PWD/../../../../../../usr/local/include/mongocxx/v_noabi
+DEPENDPATH += $$PWD/../../../../../../usr/local/include/mongocxx/v_noabi
+
+unix:!macx: LIBS += -L$$PWD/../../../../../../usr/local/lib/ -lbsoncxx
+
+INCLUDEPATH += $$PWD/../../../../../../usr/local/include/bsoncxx/v_noabi
+DEPENDPATH += $$PWD/../../../../../../usr/local/include/bsoncxx/v_noabi
